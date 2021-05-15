@@ -1,8 +1,9 @@
 import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import styled from 'styled-components';
 import AcercaDe from './components/AcercaDe';
 import Blog from './components/Blog';
+import Error404 from './components/Error404';
 import Header from './components/Header'
 import Home from './components/Home'
 import Post from './components/Post'
@@ -12,10 +13,14 @@ const App = () => {
       <ContenedorPrincipal>
         <Header/>
         <Main>
-          <Route path="/" exact={true} component={Home} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/post/:id" component={Post} />
-          <Route path="/acerca-de" component={AcercaDe} />
+          <Switch>
+
+            <Route path="/" exact={true} component={Home} />
+            <Route path="/blog" component={Blog} />
+            <Route path="/post/:id" component={Post} />
+            <Route path="/acerca-de" component={AcercaDe} />
+            <Route component={Error404}/>
+          </Switch>
         </Main>
       </ContenedorPrincipal>
     </Router>
